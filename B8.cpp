@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-void revStr(char inputStr[], char reverseStr[]) {
+void revStr(char *inputStr, char *reverseStr) {
     int length = strlen(inputStr);
     int j = 0;
-    for (int i = length - 1; i >= 0; i--) {
-        reverseStr[j] = inputStr[i];
-        j++;
-    }
-}
-
-void inChuoi(char reverseStr[]) {
-    printf("%s", reverseStr);
+    while(j <= length){
+    	*(reverseStr+j) = *(inputStr+(length-j-1));
+    	j++;
+	}
 }
 
 int main() {
@@ -21,7 +17,7 @@ int main() {
     
     inputStr[strcspn(inputStr, "\n")] = '\0';
     
+    printf("Truoc khi lat nguoc chuoi: %s\n",inputStr);
     revStr(inputStr, reverseStr);
-    inChuoi(reverseStr);
+    printf("Sau khi lat nguoc chuoi: %s",reverseStr);
 }
-
